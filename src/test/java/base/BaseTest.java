@@ -14,8 +14,8 @@ public class BaseTest {
 	
 	@BeforeClass
 	public void init() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", 
-				"E:\\DEV\\ProjectsWorkSpace\\2023\\FirstS\\lib\\d1\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", 
+				//"E:\\DEV\\ProjectsWorkSpace\\2023\\FirstS\\lib\\d1\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		Thread.sleep(2000);
