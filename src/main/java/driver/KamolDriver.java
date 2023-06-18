@@ -18,6 +18,10 @@ public class KamolDriver {
 	public String getTitle() {
 		return driver.getTitle();
 	}
+	
+	public void sum() {
+		
+	}
 
 	//Test
 }
