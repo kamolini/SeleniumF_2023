@@ -27,5 +27,8 @@ public class BaseTest {
 	public void closeDriver() {
 		driver.close();
 	}
+	
+	//sergaetg
+	//tertsert
 
 }

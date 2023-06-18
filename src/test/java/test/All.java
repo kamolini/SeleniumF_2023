@@ -8,5 +8,10 @@ public class All {
 	public void TFromKamolesh() {
 		
 	}
+	
+	@Test
+	public void T() {
+		
+	}
 
 }
