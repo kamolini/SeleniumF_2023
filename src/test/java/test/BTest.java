@@ -2,10 +2,11 @@ package test;
 
 import org.testng.annotations.Test;
 
-public class mitaTest {
-
+public class BTest {
+	
 	@Test
-	public void mita() {
+	public void mbTest() {
 		
 	}
+
 }
