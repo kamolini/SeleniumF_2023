@@ -3,8 +3,8 @@
   <groupId>Team2023</groupId>
   <artifactId>TestAutomation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-	<properties>
-		<maven.compiler.source>19</maven.compiler.source>
+
+	<dependencies>
 
   	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
