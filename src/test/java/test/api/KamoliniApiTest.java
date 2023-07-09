@@ -1,5 +1,7 @@
 package test.api;
 
+
+import org.testng.Assert; 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -25,10 +27,10 @@ public class KamoliniApiTest {
 	String uuid = UUID.randomUUID().toString();
 	
 	String email = uuid+"@gmail.com";
-	String fName = "Test Automation";
+	String fName = "Marc";
 	String mName = "Rest";
-	String lName = "RestAssured";
-	String phone = "5254845241";
+	String lName = "Best";
+	String phone = "1234567200";
 	
 	@BeforeClass
 	public void start() {
@@ -81,6 +83,16 @@ public class KamoliniApiTest {
 		Assert.assertNotNull(id);
 			
 	}
+
+	
+	@Test
+	public void DeleteCustomer() {
+		
+		Response response =  given().baseUri("https://api.kamolini.com/api/v1/customer/"+206).delete();
+		
+	
+	}
+
 	
 	@Test(dependsOnMethods = "GetCustomer")
 	public void UpdateCustomer() {
