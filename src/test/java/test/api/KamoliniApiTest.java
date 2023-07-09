@@ -133,6 +133,7 @@ public class KamoliniApiTest {
 		Assert.assertEquals(response.jsonPath().get("middleName"), mName);
 		Assert.assertEquals(response.jsonPath().getLong("phone")+"", phone);
 	}
+
 	
 	@Test(dependsOnMethods = "GetCustomerAfterUpdate")
 	public void GetCustomerByEmail() {
@@ -179,4 +180,5 @@ public class KamoliniApiTest {
 
 		Assert.assertEquals(response.body().asString(), "false");		
 	}
+
 }
