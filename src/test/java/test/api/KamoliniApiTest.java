@@ -1,6 +1,6 @@
 package test.api;
 
-import org.testng.Assert;
+import org.testng.Assert; 
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
@@ -17,10 +17,10 @@ public class KamoliniApiTest {
 	String uuid = UUID.randomUUID().toString();
 	
 	String email = uuid+"@gmail.com";
-	String fName = "Test Automation";
+	String fName = "Marc";
 	String mName = "Rest";
-	String lName = "RestAssured";
-	String phone = "5254845241";
+	String lName = "Best";
+	String phone = "1234567200";
 	
 	@Test(dependsOnMethods = "CreateCustomer")
 	public void GetCustomer() {
@@ -66,5 +66,32 @@ public class KamoliniApiTest {
 	Assert.assertEquals(response.jsonPath().getLong("phone")+"", phone);
 	Assert.assertNotNull(id);
 			
+	}
+	@Test
+	public void UpdateCustomer() {
+		
+		String lName = "ghost";
+		String body = "{\r\n"
+				+ "  \"email\": \""+email+"\",\r\n"
+				+ "  \"firstName\": \""+fName+"\",\r\n"
+				+ "  \"lastName\": \""+lName+"\",\r\n"
+				+ "  \"middleName\": \""+mName+"\",\r\n"
+				+ "  \"phone\": "+phone+"\r\n"
+				+ "}";
+		
+		
+		Response response =  given().
+				header("accept","application/json").
+				header("Content-Type","application/json").
+				baseUri("https://api.kamolini.com/api/v1/customer/update/208").
+				body(body).
+				put();
+	}
+	@Test
+	public void DeleteCustomer() {
+		
+		Response response =  given().baseUri("https://api.kamolini.com/api/v1/customer/"+206).delete();
+		
+	
 	}
 }
