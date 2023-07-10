@@ -66,6 +66,27 @@ public class KamoliniApiTest {
 				+ "  \"phone\": "+phone+""
 				+ "}";
 		
+<<<<<<< HEAD
+	Response response =  given().
+			header("accept","application/json").
+			header("Content-Type","application/json").
+			baseUri("https://api.kamolini.com/api/v1/customer/createCustomer").
+			body(body).
+			post();
+		
+	id = response.jsonPath().getInt("id");
+		System.out.println(response.getBody().asString());
+
+	Assert.assertEquals(response.jsonPath().get("email"), email);
+	Assert.assertEquals(response.jsonPath().get("firstName"), fName);
+	Assert.assertEquals(response.jsonPath().get("lastName"), lName);
+	Assert.assertEquals(response.jsonPath().get("middleName"), mName);
+	Assert.assertEquals(response.jsonPath().getLong("phone")+"", phone);
+	Assert.assertNotNull(id);
+			
+	}
+
+=======
 		Response response =  given().
 				header("accept","application/json").
 				header("Content-Type","application/json").
@@ -192,5 +213,6 @@ public class KamoliniApiTest {
 
 		Assert.assertEquals(response.body().asString(), "false");		
 	}
+>>>>>>> 7307b96fe420edf3bef232b0d68c478aa39adaf2
 
 }
