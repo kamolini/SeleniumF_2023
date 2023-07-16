@@ -12,14 +12,14 @@ public class KamoliniTest extends BaseTest{
 	
 	@Test
 	public void VerifyHomePageTitle() {
-		Assert.assertEquals(homePageActions.getTitle(), "HOME | Kamolini");
+		Assert.assertTrue(homePageActions.verifyTitle("HOME | Kamolini"));
 	}
 	
 	@Test(dependsOnMethods = "VerifyHomePageTitle")
 	public void varifyCartPageAfterAddingandNavigateToCartPage() throws InterruptedException {
 		
 		cartPageActions = homePageActions.addProductToCartAndNavigateToCart(3);
-		Assert.assertEquals(cartPageActions.getTitle(), "Cart Page | Kamolini");
+		Assert.assertTrue(cartPageActions.verifyTitle("Cart Page | Kamolini"));
 	}
 	
 	@Test(dependsOnMethods = "varifyCartPageAfterAddingandNavigateToCartPage")
@@ -27,6 +27,6 @@ public class KamoliniTest extends BaseTest{
 		
 		double a = cartPageActions.getSubTotalOfAllProduct();
 		double e = cartPageActions.getSubTotalOfAllProduct();
-		Assert.assertEquals(a,e);
+		Assert.assertEquals(a,e);		
 	}
 }

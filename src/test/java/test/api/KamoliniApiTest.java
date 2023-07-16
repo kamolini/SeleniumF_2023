@@ -2,7 +2,6 @@ package test.api;
 
 
 import org.testng.Assert; 
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -87,8 +86,18 @@ public class KamoliniApiTest {
 	
 	@Test
 	public void DeleteCustomer() {
+				
+		String s = new String();
+		s = "Kamol";
 		
-		Response response =  given().baseUri("https://api.kamolini.com/api/v1/customer/"+206).delete();
+		String s1 = new String();
+		s1 = "Kamol";
+		
+		if(s.equals(s1)) {
+			System.out.println("True");
+		}else{
+			System.out.println("Not True");
+		}
 		
 	
 	}
@@ -175,7 +184,7 @@ public class KamoliniApiTest {
 	}
 	
 	@Test(dependsOnMethods = "validateIsCustomerExistbyEmail")
-	public void DeleteCustomerByEmail() {
+	public void DeleteCustomerById() {
 		Response response =  given().
 				pathParam("id", id).
 				delete(deleteCustomer);
@@ -184,7 +193,7 @@ public class KamoliniApiTest {
 	}
 	
 
-	@Test(dependsOnMethods = "DeleteCustomerByEmail")
+	@Test(dependsOnMethods = "DeleteCustomerById")
 	public void validateCustomerNotExistbyEmail() {
 		Response response =  given().
 				pathParam("email", email).

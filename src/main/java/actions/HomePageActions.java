@@ -11,7 +11,8 @@ public class HomePageActions extends HomePageElements {
 	
 	  public HomePageActions(WebDriver driver) { 
 		  super(driver); 
-		  }
+		  
+	  }
 	  
 	 
 
@@ -20,17 +21,20 @@ public class HomePageActions extends HomePageElements {
 			Actions actions = new Actions(driver);
 
 			if (i > 3) {
-				nextProduct.click();
+				//nextProduct.click();
+				click(nextProduct);
 			}
 
 			actions.moveToElement(product(i)).build().perform();
-			Thread.sleep(4000);
+			
+			//Thread.sleep(4000);
+			//quickView(i).click();
+			staticWait(4);
+			click(quickView(i));
 
-			quickView(i).click();
-
-			Thread.sleep(3000);
-
-			driver.switchTo().frame(iframeElement);
+		
+			
+			switchToFrame(iframeElement);
 
 			try {
 				Select select = new Select(d1);
@@ -42,19 +46,27 @@ public class HomePageActions extends HomePageElements {
 			} catch (Throwable t) {
 			}
 
-			addToCart.click();
+			//addToCart.click();
+			click(addToCart);
 
-			Thread.sleep(3000);
-			driver.switchTo().defaultContent();
-			driver.switchTo().frame(1);
+			staticWait(3);
+			//driver.switchTo().defaultContent();
+			switchToDefaultContent();
+			
+			//driver.switchTo().frame(1);
+			switchToFrame(1);
 
 			if (i != numOfProduct) {
-				icon.click();
+				//icon.click();
+				click(icon);
 			} else {
-				viewCartButton.click();
+				//viewCartButton.click();
+				click(viewCartButton);
 			}
-			Thread.sleep(3000);
-			driver.switchTo().defaultContent();
+			staticWait(3);
+			
+			//driver.switchTo().defaultContent();
+			switchToDefaultContent();
 		}
 		return new CartPageActions(driver);
 	}
