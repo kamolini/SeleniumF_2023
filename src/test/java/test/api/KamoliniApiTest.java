@@ -2,7 +2,6 @@ package test.api;
 
 
 import org.testng.Assert; 
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -66,27 +65,6 @@ public class KamoliniApiTest {
 				+ "  \"phone\": "+phone+""
 				+ "}";
 		
-<<<<<<< HEAD
-	Response response =  given().
-			header("accept","application/json").
-			header("Content-Type","application/json").
-			baseUri("https://api.kamolini.com/api/v1/customer/createCustomer").
-			body(body).
-			post();
-		
-	id = response.jsonPath().getInt("id");
-		System.out.println(response.getBody().asString());
-
-	Assert.assertEquals(response.jsonPath().get("email"), email);
-	Assert.assertEquals(response.jsonPath().get("firstName"), fName);
-	Assert.assertEquals(response.jsonPath().get("lastName"), lName);
-	Assert.assertEquals(response.jsonPath().get("middleName"), mName);
-	Assert.assertEquals(response.jsonPath().getLong("phone")+"", phone);
-	Assert.assertNotNull(id);
-			
-	}
-
-=======
 		Response response =  given().
 				header("accept","application/json").
 				header("Content-Type","application/json").
@@ -108,8 +86,18 @@ public class KamoliniApiTest {
 	
 	@Test
 	public void DeleteCustomer() {
+				
+		String s = new String();
+		s = "Kamol";
 		
-		Response response =  given().baseUri("https://api.kamolini.com/api/v1/customer/"+206).delete();
+		String s1 = new String();
+		s1 = "Kamol";
+		
+		if(s.equals(s1)) {
+			System.out.println("True");
+		}else{
+			System.out.println("Not True");
+		}
 		
 	
 	}
@@ -196,7 +184,7 @@ public class KamoliniApiTest {
 	}
 	
 	@Test(dependsOnMethods = "validateIsCustomerExistbyEmail")
-	public void DeleteCustomerByEmail() {
+	public void DeleteCustomerById() {
 		Response response =  given().
 				pathParam("id", id).
 				delete(deleteCustomer);
@@ -205,7 +193,7 @@ public class KamoliniApiTest {
 	}
 	
 
-	@Test(dependsOnMethods = "DeleteCustomerByEmail")
+	@Test(dependsOnMethods = "DeleteCustomerById")
 	public void validateCustomerNotExistbyEmail() {
 		Response response =  given().
 				pathParam("email", email).
@@ -213,6 +201,5 @@ public class KamoliniApiTest {
 
 		Assert.assertEquals(response.body().asString(), "false");		
 	}
->>>>>>> 7307b96fe420edf3bef232b0d68c478aa39adaf2
 
 }
