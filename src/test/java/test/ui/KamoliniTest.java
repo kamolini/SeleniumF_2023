@@ -20,6 +20,7 @@ public class KamoliniTest extends BaseTest{
 		
 		cartPageActions = homePageActions.addProductToCartAndNavigateToCart(3);
 		Assert.assertTrue(cartPageActions.verifyTitle("Cart Page | Kamolini"));
+
 	}
 	
 	@Test(dependsOnMethods = "varifyCartPageAfterAddingandNavigateToCartPage")
@@ -28,5 +29,6 @@ public class KamoliniTest extends BaseTest{
 		double a = cartPageActions.getSubTotalOfAllProduct();
 		double e = cartPageActions.getSubTotalOfAllProduct();
 		Assert.assertEquals(a,e);		
+
 	}
 }
