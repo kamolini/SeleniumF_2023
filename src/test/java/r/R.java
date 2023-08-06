@@ -16,16 +16,16 @@ public class R {
 		//System.out.println(isP(s));
 		
 		
-		String st[] = {"ten", "ana", "sdfs", "dad", "mom"};
+		String st = "Java";
 		
-		System.out.println(listOfNonP(st));
+		System.out.println(isPalindrome(st));
 		
 		
 	}
 	
 	
 	
-	public boolean isP(String s) {
+	public boolean isPalindrome(String s) {
 		String newS = reverse(s);		
 		if(s.equals(newS)) {
 			return true;
