@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import actions.HomePageActions;
+import actions.wixkamolini.HomePageActions;
 
 public class BaseTest {
 	
@@ -14,8 +14,6 @@ public class BaseTest {
 	
 	@BeforeClass
 	public void init() throws InterruptedException {
-		//System.setProperty("webdriver.chrome.driver", 
-				//"E:\\DEV\\ProjectsWorkSpace\\2023\\FirstS\\lib\\d1\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		Thread.sleep(2000);
@@ -29,7 +27,5 @@ public class BaseTest {
 		driver.close();
 	}
 	
-	//sergaetg
-	//tertsert
 
 }

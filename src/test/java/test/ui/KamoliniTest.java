@@ -3,7 +3,7 @@ package test.ui;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import actions.CartPageActions;
+import actions.wixkamolini.CartPageActions;
 import base.BaseTest;
 
 public class KamoliniTest extends BaseTest{
