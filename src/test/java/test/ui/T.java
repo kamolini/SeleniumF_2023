@@ -35,8 +35,7 @@ public class T extends BaseTest{
 		
 		WebElement nextB = null;
 		
-		
-		
+
 		/*
 		 * WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		 * driverWait.until(ExpectedConditions.elementToBeClickable(nextB));
