@@ -1,4 +1,4 @@
-package iok;
+package util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,23 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.testng.annotations.Test;
-
-public class Pro {
+public class P_util {
 	
-	@Test
-	public void T() throws IOException {
-		
-		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\data\\data.properties");
+	public static Properties getConfig(String fileName) throws IOException {
+		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\properties\\"+fileName+".properties");
 		
 		InputStream inputStream = new FileInputStream(file);
-		
 		Properties properties = new Properties();
-		
 		properties.load(inputStream);
-		
-		System.out.println(properties.get("TestEnv"));
-
+		return properties;
 	}
+	
+	
 
 }

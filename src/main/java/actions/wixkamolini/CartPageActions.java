@@ -1,10 +1,10 @@
-package actions;
+package actions.wixkamolini;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import driver.KamolDriver;
-import elements.CartPageElements;
+import elements.wixkamolini.CartPageElements;
 
 public class CartPageActions extends CartPageElements{
 	
