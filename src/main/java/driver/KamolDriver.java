@@ -1,7 +1,9 @@
 package driver;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -67,5 +69,18 @@ public class KamolDriver {
 	public void switchToDefaultContent(){
 		staticWait(3);
 		driver.switchTo().defaultContent();
+	}
+	
+	public void c() {
+		Cookie cookie1 = new Cookie("name", "value");
+		driver.manage().addCookie(cookie1);
+		
+		
+		
+		Cookie cookie =  driver.manage().getCookieNamed("name");
+		driver.manage().deleteCookie(cookie);
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.MICROSECONDS);
+		
 	}
 }
