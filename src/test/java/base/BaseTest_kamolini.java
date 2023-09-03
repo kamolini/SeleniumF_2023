@@ -29,7 +29,6 @@ public class BaseTest_kamolini {
 		
 		testURL = "https://"+testEnv+".kamolini.com/";
 
-		
 		driver.get(testURL);
 		homePageActions = new HomePageActions(driver);
 	}
