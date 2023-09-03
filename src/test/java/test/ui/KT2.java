@@ -18,14 +18,14 @@ public class KT2 extends BaseTest_kamolini{
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods =  "VerifyCurrentUrl")
 	public void VerifyHomePageTitle() throws InterruptedException, IOException {
 		
 	 	Assert.assertEquals(P_util.getConfig("title").getProperty("HomePage"), driver.getTitle());
 		
 	}
 	
-	@Test(dependsOnMethods = "VerifyCurrentUrl")
+	@Test(dependsOnMethods = {"VerifyHomePageTitle"})
 	public void VerifyLoginPageTitle() throws InterruptedException, IOException {
 		
 		homePageActions.navigateToLoginPage();
