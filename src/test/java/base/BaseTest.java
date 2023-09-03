@@ -1,31 +1,31 @@
 package base;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import actions.wixkamolini.HomePageActions;
 
 public class BaseTest {
 	
-	public WebDriver driver = null;
 	public HomePageActions homePageActions = null;
 	
-	@BeforeClass
-	public void init() throws InterruptedException {
-
-		driver = new ChromeDriver();
+	
+	public WebDriver getDriver() throws InterruptedException, IOException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		Thread.sleep(2000);
-		driver.get("https://kamoleshbachar.wixsite.com/kamolini");
-		homePageActions = new HomePageActions(driver);
+		return driver;
 	}
 	
-	@AfterClass
-
-	public void closeDriver() {
+	public void closeDriver(WebDriver driver) {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		driver.close();
 	}
 	
-
 }

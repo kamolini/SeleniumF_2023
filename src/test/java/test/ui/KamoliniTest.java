@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import actions.wixkamolini.CartPageActions;
-import base.BaseTest;
+import base.BaseTest_wixKamolini;
 
-public class KamoliniTest extends BaseTest{
+public class KamoliniTest extends BaseTest_wixKamolini{
 	
 	CartPageActions cartPageActions = null;
 	

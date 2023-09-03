@@ -2,7 +2,6 @@ package test.ui;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -28,7 +27,7 @@ public class KT {
 		
 		
 		
-		String env = properties.getProperty("TestEnv").toLowerCase();
+		String env = properties.getProperty("TestEnv");
 		
 		WebDriver driver = new ChromeDriver();
 		
@@ -37,8 +36,13 @@ public class KT {
 		
 		String testURL = "https://"+env+".kamolini.com/";
 		
+		if(env.equals("QA")) {
+			testURL = "https://qa.kamolini.com/";
+		}else if(env.equals("UAT")) {
+			testURL = "https://uat.kamolini.com/";
+		}
 		
-		
+	
 		driver.get(testURL);
 		
 	 	Assert.assertEquals(testURL, driver.getCurrentUrl());

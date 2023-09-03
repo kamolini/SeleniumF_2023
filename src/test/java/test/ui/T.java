@@ -12,9 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import base.BaseTest_wixKamolini;
 import driver.KamolDriver;
 
-public class T extends BaseTest{
+public class T extends BaseTest_wixKamolini{
 	
 	
 
