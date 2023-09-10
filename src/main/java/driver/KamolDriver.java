@@ -31,7 +31,6 @@ public class KamolDriver {
 		}else {
 			return false;
 		}
-		
 	}
 	
 	
@@ -75,12 +74,9 @@ public class KamolDriver {
 		Cookie cookie1 = new Cookie("name", "value");
 		driver.manage().addCookie(cookie1);
 		
-		
-		
 		Cookie cookie =  driver.manage().getCookieNamed("name");
 		driver.manage().deleteCookie(cookie);
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.MICROSECONDS);
-		
 	}
 }
