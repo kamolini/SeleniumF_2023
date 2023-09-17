@@ -5,14 +5,26 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.google.gson.Gson;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import model.Customer;
+import model.Person;
+import model.PersonName;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static io.restassured.RestAssured.given;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 public class KamoliniApiTest {
+	
+	Customer customer = null;
 	
 	String createCustomer = "{createCustomer}";
 	String getCustomer = "{id}";
@@ -44,18 +56,40 @@ public class KamoliniApiTest {
 				get(getCustomer);
 
 		System.out.println(response.getBody().asString());
+		
+		
 			
 		Assert.assertEquals(response.jsonPath().getInt("id"), id);
 		Assert.assertEquals(response.jsonPath().get("email"), email);
-		Assert.assertEquals(response.jsonPath().get("firstName"), fName);
-		Assert.assertEquals(response.jsonPath().get("lastName"), lName);
-		Assert.assertEquals(response.jsonPath().get("middleName"), mName);
-		Assert.assertEquals(response.jsonPath().getLong("phone")+"", phone);
+		Assert.assertEquals(response.jsonPath().get("firstName"), customer.getFirstName());
+		Assert.assertEquals(response.jsonPath().get("lastName"), customer.getLastName());
+		Assert.assertEquals(response.jsonPath().get("middleName"), customer.getMiddleName());
+		Assert.assertEquals(response.jsonPath().getLong("phone")+"", customer.getPhone());
 	}
 	
 	
 	@Test
-	public void CreateCustomer() {
+	public void CreateCustomer() throws StreamReadException, DatabindException, IOException {
+		
+		/*
+		 * Customer customer = new Customer();
+		 * 
+		 * customer.setFirstName(fName); 
+		 * customer.setMiddleName(mName);
+		 * customer.setLastName(lName); 
+		 * customer.setEmail(email);
+		 * customer.setPhone(phone);
+		 */
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		File file = new File("E:\\DEV\\ProjectsWorkSpace\\2023\\TestAutomation\\src\\test\\resources\\CreateCustomer.json");
+		
+		customer = mapper.readValue(file, Customer.class);
+		
+		customer.setFirstName("M");
+		customer.setEmail(email);
+		
 		
 		String body = "{"
 				+ "  \"email\": \""+email+"\","
@@ -65,21 +99,31 @@ public class KamoliniApiTest {
 				+ "  \"phone\": "+phone+""
 				+ "}";
 		
+		//Gson gson = new Gson();
+		
+		String cus = new Gson().toJson(customer);
+		
+		
 		Response response =  given().
 				header("accept","application/json").
 				header("Content-Type","application/json").
 				pathParam("createCustomer", "createCustomer"). 
-				body(body).
+				body(cus).
 				post(createCustomer);
+		
+		System.out.println(response.statusCode());
 			
 		id = response.jsonPath().getInt("id");
 	
 		Assert.assertEquals(response.jsonPath().get("email"), email);
-		Assert.assertEquals(response.jsonPath().get("firstName"), fName);
-		Assert.assertEquals(response.jsonPath().get("lastName"), lName);
-		Assert.assertEquals(response.jsonPath().get("middleName"), mName);
-		Assert.assertEquals(response.jsonPath().getLong("phone"), Long.parseLong(phone));
+		Assert.assertEquals(response.jsonPath().get("firstName"), customer.getFirstName());
+		Assert.assertEquals(response.jsonPath().get("lastName"), customer.getLastName());
+		Assert.assertEquals(response.jsonPath().get("middleName"), customer.getMiddleName());
+		Assert.assertEquals(response.jsonPath().getLong("phone")+"", customer.getPhone());
+		
 		Assert.assertNotNull(id);
+		
+		
 			
 	}
 
@@ -127,6 +171,9 @@ public class KamoliniApiTest {
 				+ "  \"middleName\": \""+mName+"\","
 				+ "  \"phone\": "+phone+""
 				+ "}";
+		
+		
+		
 		
 		response =  given().
 				header("accept","application/json").
@@ -200,6 +247,37 @@ public class KamoliniApiTest {
 				get(isCustomerExist);
 
 		Assert.assertEquals(response.body().asString(), "false");		
+	}
+	
+	
+	@Test
+	public void v() {
+		
+		  Customer customer = new Customer();
+		  
+		  customer.setFirstName("Test");
+		  
+		  System.out.println(customer.toString());
+		  
+		  
+		  System.out.println("---------------");
+		 
+		
+		Person person = new Person();
+		
+		PersonName name = new PersonName();
+		
+		person.setName(name);
+		
+		System.out.println(person.getName().getFirstName());
+		
+		person.getName().setFirstName("Kamol");
+		
+		 System.out.println(person.getName().getFirstName());
+
+		
+		
+		
 	}
 
 }
