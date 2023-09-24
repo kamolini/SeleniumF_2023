@@ -83,7 +83,7 @@ public class KamoliniApiTest {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		File file = new File("E:\\DEV\\ProjectsWorkSpace\\2023\\TestAutomation\\src\\test\\resources\\CreateCustomer.json");
+		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\CreateCustomer.json");
 		
 		customer = mapper.readValue(file, Customer.class);
 		
