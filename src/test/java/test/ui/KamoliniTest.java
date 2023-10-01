@@ -1,16 +1,23 @@
 package test.ui;
 
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import actions.wixkamolini.CartPageActions;
 import base.BaseTest_wixKamolini;
 
+@Listeners(l.Listener.class)
 public class KamoliniTest extends BaseTest_wixKamolini{
 	
 	CartPageActions cartPageActions = null;
 	
-	@Test
+	@Test(dependsOnMethods = "Tss")
 	public void VerifyHomePageTitle() {
 		Assert.assertTrue(homePageActions.verifyTitle("HOME | Kamolini"));
 	}
@@ -30,5 +37,19 @@ public class KamoliniTest extends BaseTest_wixKamolini{
 		double e = cartPageActions.getSubTotalOfAllProduct();
 		Assert.assertEquals(a,e);		
 
+	}
+	
+	
+	@Test
+	public void Tss() throws IOException {
+		
+		//homePageActions.takeSS();
+		//System.out.println(9/0);
+		 
+		homePageActions.clickByJavascriptExecutor(homePageActions.cartButton);
+		
+		 
+		 
+		 
 	}
 }
