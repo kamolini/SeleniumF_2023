@@ -1,9 +1,16 @@
 package driver;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,11 +18,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class KamolDriver {
 	
-	public WebDriver driver = null;
+	public static WebDriver driver = null;
 	
 	public KamolDriver(WebDriver driver) {
 		this.driver = driver;
 	}
+	
 	
 	public double getPriceFromText(WebElement element){
 		return Double.parseDouble(element.getText().replace("$", ""));
@@ -79,4 +87,30 @@ public class KamolDriver {
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.MICROSECONDS);
 	}
+	
+	public static void takeSS(WebDriver driver) throws IOException {
+		TakesScreenshot screenshot = (TakesScreenshot)driver;
+		 File file =  screenshot.getScreenshotAs(OutputType.FILE);
+		 
+		 
+		 String date = LocalDateTime.now().toString();
+		 
+		 date = date.replace(":", "_");
+		 
+		 System.out.println(date);
+
+		 File dFile = new File(System.getProperty("user.dir")+"/src/test/resources/ss/"+date+".png");
+		 
+		FileUtils.copyFile(file, dFile);
+	}
+	
+	public void javascriptExecutor(String a, WebElement b) {
+		 JavascriptExecutor javascriptExecutor = (JavascriptExecutor)driver;
+		 javascriptExecutor.executeScript(a, b);
+	}
+	
+	public void clickByJavascriptExecutor(WebElement b) {
+		javascriptExecutor("arguments[0].click()", b);
+	}
+	
 }

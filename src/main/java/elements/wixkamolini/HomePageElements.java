@@ -48,6 +48,9 @@ public class HomePageElements extends KamolDriver{
 	@FindBy(id = "widget-view-cart-button")
 	public WebElement viewCartButton;
 	
+	@FindBy(xpath = "//a[@role='button']")
+	public WebElement cartButton;
+	
 	
 
 }
