@@ -41,7 +41,7 @@
 	    <version>5.2.3</version>
 	</dependency>
 
-	<!--To converte the POJO calsses to JSON object/String-->
+	<!--To convert the POJO classes to JSON object/String-->
 	<dependency>
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>
