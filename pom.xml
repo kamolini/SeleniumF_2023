@@ -15,7 +15,14 @@
   	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-java</artifactId>
-	    <version>4.12.0</version>
+	    <version>4.13.0</version>
+	</dependency>
+	
+	
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-remote-driver</artifactId>
+	    <version>4.13.0</version>
 	</dependency>
 	
 	<!-- To use TestNg -->
@@ -64,6 +71,23 @@
 	</dependency>
 
   </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>3.1.2</version>
+	        <configuration>
+	          <suiteXmlFiles>
+	            <suiteXmlFile>${xml}.xml</suiteXmlFile>
+	          </suiteXmlFiles>
+	        </configuration>
+      </plugin>
+  	</plugins>
+  </build>
+  
+
 
 
 </project>
