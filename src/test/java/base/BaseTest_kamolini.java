@@ -7,22 +7,25 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import com.fasterxml.jackson.databind.deser.Deserializers.Base;
+
 import actions.kamolini.HomePageActions;
 import util.P_util;
 
-public class BaseTest_kamolini {
+public class BaseTest_kamolini extends BaseTest{
 	
-	BaseTest baseTest = null;
+	//BaseTest baseTest = null;
 	
 	public WebDriver driver = null;
 	public HomePageActions homePageActions = null;
 	public String testURL = null;
 	
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void init() throws InterruptedException, IOException {
 		
-		baseTest = new BaseTest();
-		driver = baseTest.getDriver();
+		driver = getDriver();
+		
+		System.out.println("In B");
 		
 		Properties config =  P_util.getConfig("config");
 		String testEnv = config.getProperty("TestEnv").toLowerCase();
@@ -35,7 +38,7 @@ public class BaseTest_kamolini {
 	
 	@AfterClass
 	public void close() {
-		baseTest.closeDriver(driver);
+		closeDriver(driver);
 	}
 	
 	
