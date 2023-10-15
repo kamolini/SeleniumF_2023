@@ -30,7 +30,17 @@ public class BaseTest_kamolini extends BaseTest{
 		Properties config =  P_util.getConfig("config");
 		String testEnv = config.getProperty("TestEnv").toLowerCase();
 		
-		testURL = "https://"+testEnv+".kamolini.com/";
+		testEnv = testEnv.equalsIgnoreCase("PROD")? "" : testEnv+".";
+		
+		/*
+		if(testEnv.equalsIgnoreCase("PROD")) {
+			testEnv = "";
+		}else {
+			testEnv = testEnv+".";
+		}
+		*/
+		
+		testURL = "https://"+testEnv+"kamolini.com/";
 
 		driver.get(testURL);
 		homePageActions = new HomePageActions(driver);
