@@ -72,6 +72,8 @@
 
   </dependencies>
   
+  
+  <!--To provide any test XML to run the test-->
   <build>
   	<plugins>
   		<plugin>

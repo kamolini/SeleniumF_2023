@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -25,6 +26,37 @@ public class KamolDriver {
 	}
 	
 	
+	public void fillText(WebElement ele, String text) {
+		System.out.println("Test data -> "+text );
+		ele.sendKeys(text);
+	}
+	
+	public void clearAndFillText(WebElement ele, String text) {
+		ele.clear();
+		fillText(ele,text);
+	}
+	
+	public boolean isDisplayed(WebElement ele) {
+		return ele.isDisplayed();
+	}
+	
+	public boolean isEnabled(WebElement ele) {
+		return ele.isEnabled();
+	}
+	
+	public boolean isDisabled(WebElement ele) {
+		return !isEnabled(ele);
+	}
+	
+	public String getText(WebElement element) {
+		return element.getText();
+	}
+	
+	public boolean verifyText(String actual, String expected) {
+		System.out.println("actual["+actual+"] expected ["+expected+"]");
+		return actual.contentEquals(expected);
+	}
+	
 	public double getPriceFromText(WebElement element){
 		return Double.parseDouble(element.getText().replace("$", ""));
 	}
@@ -34,19 +66,25 @@ public class KamolDriver {
 	}
 	
 	public boolean verifyTitle(String expectedTitle) {
+		
+		return driver.getTitle().equals(expectedTitle) ? true : false;
+		
+		/*
 		if(driver.getTitle().equals(expectedTitle)) {
 			return true;
 		}else {
 			return false;
 		}
+		*/
 	}
 	
 	
 	public void click(WebElement ele) {
+		
 		if(isClickable(ele)) {
 			ele.click();
 		}else {
-			
+			throw new ElementClickInterceptedException("Element is not clickable");
 		}
 	}
 	
