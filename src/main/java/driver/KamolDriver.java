@@ -53,7 +53,7 @@ public class KamolDriver {
 	}
 	
 	public boolean verifyText(String actual, String expected) {
-		System.out.println("actual["+actual+"] expectex ["+expected+"]");
+		System.out.println("actual["+actual+"] expected ["+expected+"]");
 		return actual.contentEquals(expected);
 	}
 	
