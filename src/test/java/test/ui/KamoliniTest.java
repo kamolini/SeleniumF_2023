@@ -17,12 +17,12 @@ public class KamoliniTest extends BaseTest_wixKamolini{
 	
 	CartPageActions cartPageActions = null;
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void VerifyHomePageTitle() {
 		Assert.assertTrue(homePageActions.verifyTitle("HOME | Kamolini"));
 	}
 	
-	@Test(dependsOnMethods = "VerifyHomePageTitle", enabled = false)
+	@Test(dependsOnMethods = "VerifyHomePageTitle", enabled = true)
 	public void varifyCartPageAfterAddingandNavigateToCartPage() throws InterruptedException {
 		
 		cartPageActions = homePageActions.addProductToCartAndNavigateToCart(3);
@@ -30,7 +30,7 @@ public class KamoliniTest extends BaseTest_wixKamolini{
 
 	}
 	
-	@Test(dependsOnMethods = "varifyCartPageAfterAddingandNavigateToCartPage", enabled = false)
+	@Test(dependsOnMethods = "varifyCartPageAfterAddingandNavigateToCartPage", enabled = true)
 	public void verifySubTotal() {
 		
 		double a = cartPageActions.getSubTotalOfAllProduct();
