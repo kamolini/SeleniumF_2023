@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -54,11 +54,16 @@ public class BaseTest {
 		}else {
 			System.out.println("Local");
 			driver = new ChromeDriver();
-		}
 		
+		}
 		driver.manage().window().maximize();
-		Thread.sleep(2000);
-		System.out.println("Before Return ");
+		if(P_util.getConfig("config").getProperty("isResponsive").equalsIgnoreCase("true")) {
+			Thread.sleep(2000);
+			String devoceName = P_util.getConfig("config").getProperty("deviceName");
+			String deviceDimension[] = P_util.getConfig("device").getProperty(devoceName).split(",");
+			Dimension d = new Dimension(Integer.parseInt(deviceDimension[0]), Integer.parseInt(deviceDimension[1]));
+			driver.manage().window().setSize(d);
+		}
 		return driver;
 		
 	}
